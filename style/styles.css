@@ -1,0 +1,100 @@
+nav {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff9900;
+}
+
+header {
+    text-align: center;
+    padding: 50px;
+    background: #f1f1f1;
+}
+
+section {
+    padding: 50px;
+    background: #fff;
+}
+
+#property-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+}
+
+#property-list .property {
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+#cart-count {
+    color: #fff;
+    background-color: #ff9900;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+.property button:hover {
+    background-color: #ff9900;
+    color: #fff;
+    cursor: pointer;
+}
+
+.property {
+    border: 1px solid #ccc;
+    padding: 20px;
+    position: relative;
+}
+
+.property img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.property h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.property p {
+    margin-bottom: 10px;
+}
+
+.property .price {
+    font-weight: bold;
+}
+
+.property .category {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 14px;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.property .checkout-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
