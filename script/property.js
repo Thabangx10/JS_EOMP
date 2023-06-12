@@ -15,6 +15,30 @@ const properties = [
         image: "https://i.postimg.cc/fb5Tgpy1/condo.jpg",
         category: "Beachfront"
     },
+    {
+        id: 3,
+        title: "Luxury Villa",
+        description: "Beautiful villa with stunning views",
+        price: 500000,
+        image: "https://i.postimg.cc/J7NdV8My/villa.jpg",
+        category: "Surbarbian"
+    },
+    {
+        id: 4,
+        title: "Beachfront Condo",
+        description: "Spacious condo right on the beach",
+        price: 250000,
+        image: "https://i.postimg.cc/fb5Tgpy1/condo.jpg",
+        category: "City"
+    },
+    {
+        id: 5,
+        title: "Beachfront Condo",
+        description: "Spacious condo right on the beach",
+        price: 250000,
+        image: "https://i.postimg.cc/fb5Tgpy1/condo.jpg",
+        category: "Beachfront"
+    },
 
 ];
 
@@ -27,6 +51,7 @@ function generatePropertyHTML(property) {
             <p>${property.description}</p>
             <strong>Price: $${property.price}</strong>
             <span>Category: ${property.category}</span>
+            <button onclick="addToCart(${property.id})">Add to Cart</button>
         </div>
     `;
 }
@@ -43,6 +68,20 @@ function displayProperties() {
         const propertyHTML = generatePropertyHTML(property);
         propertyList.insertAdjacentHTML("beforeend", propertyHTML);
     });
+}
+
+// Function to add a property to the cart
+function addToCart(propertyId) {
+    // Find the selected property by its ID
+    const property = properties.find(property => property.id === propertyId);
+
+    // Add the property to the cart (localStorage)
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    cartItems.push(property);
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+    // Display a success message (you can customize this part)
+    alert("Property added to cart!");
 }
 
 // Event listener for page load
@@ -102,15 +141,4 @@ function updateCartCount() {
 // Event listener for page load
 window.addEventListener("load", function () {
     updateCartCount();
-});
-
-// Event listeners for navigation links
-const navigationLinks = document.querySelectorAll("nav ul li a");
-navigationLinks.forEach(link => {
-    link.addEventListener("click", function (e) {
-        e.preventDefault();
-        const targetSectionId = this.getAttribute("href").substring(1);
-        const targetSection = document.getElementById(targetSectionId);
-        targetSection.scrollIntoView({ behavior: "smooth" });
-    });
 });
