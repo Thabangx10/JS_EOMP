@@ -6,17 +6,92 @@
     <title>Property Website</title>
     <link rel="stylesheet" href="./style/styles.css">
 </head>
+<style>
+
+/* Style the contact section */
+#contact {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  #contact h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  #contact form {
+    margin-top: 20px;
+  }
+  
+  #contact input[type="text"],
+  #contact input[type="email"],
+  #contact textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease;
+  }
+  
+  #contact input[type="text"]:focus,
+  #contact input[type="email"]:focus,
+  #contact textarea:focus {
+    border-color: #666;
+  }
+  
+  #contact textarea {
+    height: 150px;
+  }
+  
+  #contact button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  /* Responsive styles for contact section */
+  @media (max-width: 768px) {
+    #contact {
+      padding: 10px;
+    }
+  
+    #contact input[type="text"],
+    #contact input[type="email"],
+    #contact textarea {
+      padding: 8px;
+      font-size: 14px;
+    }
+  
+    #contact textarea {
+      height: 120px;
+    }
+  
+    #contact button[type="submit"] {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+  }  
+    
+</style>
 <body>
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#properties">Properties</a></li>
-            <li><a href="./html/checkout.html">Checkout</a></li>
-            <li><a href="./html/admin.html">Admin</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="./html/properties.html" target="_blank">Properties</a></li>
+            <!-- <li><a href="./html/checkout.html">Checkout</a></li> -->
+            <!-- <li><a href="./html/admin.html">Admin</a></li> -->
             <li><a href="#contact">Contact</a></li>
         </ul>
         <div id="cart">
-            <a href="#cart">Cart (<span id="cart-count">0</span>)</a>
+            <a href="./html/checkout.html">Cart (<span id="cart-count">0</span>)</a>
         </div>
     </nav>
 
@@ -24,10 +99,44 @@
         <h1>Welcome to our Property Website</h1>
         <p>Find your dream property here!</p>
     </header>
+    
+    <!-- About -->
+    
+    <section id="about">
+        <h2>About</h2>
+        <div id="content">
+            <p>
+                As a student in web development, I am thrilled to present you with my first dynamic application, a Property Website with a Point of Sale vision. This website aims to provide a seamless and user-friendly experience for users looking to find their dream property.
+            </p>
+            <p>
+                Our Property Website offers a wide range of properties, including luxury villas, beachfront condos, suburban houses, and more. Each property is meticulously curated to meet the highest standards of quality and comfort, ensuring that you can find the perfect home that suits your preferences and lifestyle.
+            </p>
+            <p>
+                With our Point of Sale feature, you can easily add properties to your cart, review them, and proceed to checkout with a simple and secure process. Our goal is to make the property buying experience as convenient and efficient as possible, allowing you to focus on finding your ideal property without any hassle.
+            </p>
+            <p>
+                We understand that purchasing a property is a significant decision, and our dedicated team is here to assist you every step of the way. Whether you have questions about a specific property, need guidance during the checkout process, or require additional information, we are here to provide the support you need.
+            </p>
+            <p>
+                Thank you for choosing our Property Website. We are excited to embark on this journey with you and help you find the home of your dreams. Explore our extensive collection of properties, add your favorites to the cart, and let us take care of the rest.
+            </p>
+            <p>
+                Happy property hunting!
+            </p>
+    
+        </div>
+    </section>
 
     <section id="properties">
         <h2>Properties</h2>
-        <div id="property-list"></div>
+        <div id="property-list">
+
+        </div>
+        <div class="row">
+            <div class="btn">
+                <a href="./html/properties.html"><button id="button">More property!</button></a>
+            </div>
+        </div>
     </section>
 
     <section id="contact">

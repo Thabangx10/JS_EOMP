@@ -1,43 +1,54 @@
-// JavaScript code for checkout.html page
-
-// Get the cart item list element
-const cartItemList = document.getElementById("cart-item-list");
-
-// Get the total amount element
-const totalAmount = document.getElementById("amount");
-
-// Function to calculate and display the total amount
-function calculateTotalAmount() {
-    // Retrieve cart items from localStorage or perform other necessary actions
-    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-    // Calculate the total amount
-    let sum = 0;
-    cartItems.forEach(item => {
-        sum += item.price;
-    });
-
-    // Display the total amount
-    totalAmount.textContent = sum;
-}
-
-// Function to display the cart items
+// Function to display cart items
 function displayCartItems() {
-    // Retrieve cart items from localStorage or perform other necessary actions
     const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    const cartItemsDiv = document.getElementById("cart-items");
+    let totalPrice = 0;
 
     // Clear existing cart items
-    cartItemList.innerHTML = "";
+    cartItemsDiv.innerHTML = "";
 
     // Generate HTML for each cart item
-    cartItems.forEach(item => {
-        const cartItemHTML = generateCartItemHTML(item);
-        cartItemList.insertAdjacentHTML("beforeend", cartItemHTML);
+    cartItems.forEach(property => {
+        cartItemsDiv.insertAdjacentHTML("beforeend", `
+            <div class="cart-item">
+                <img src="${property.image}" alt="${property.title}">
+                <h3>${property.title}</h3>
+                <p>${property.description}</p>
+                <strong>Price: $${property.price}</strong>
+            </div>
+        `);
+
+        // Update total price
+        totalPrice += property.price;
     });
 
-    // Calculate and display the total amount
-    calculateTotalAmount();
+    // Display total price
+    const totalPriceDiv = document.getElementById("total-price");
+    totalPriceDiv.textContent = `Total: $${totalPrice}`;
 }
 
-// Event listener for page load
-window.addEventListener("load", displayCartItems);
+// Function to generate HTML for a cart item
+function generateCartItemHTML(item) {
+  return `
+    <div class="cart-item">
+      <h3>${item.title}</h3>
+      <p>${item.description}</p>
+      <strong>Price: $${item.price}</strong>
+      <button class="remove-item" data-id="${item.id}">Remove</button>
+    </div>
+  `;
+}
+
+// Event listener for remove item buttons
+cartItemList.addEventListener("click", function (e) {
+  if (e.target.classList.contains("remove-item")) {
+    const itemId = e.target.getAttribute("data-id");
+    removeItem(itemId);
+  }
+});
+
+// Update the cart count and display the cart items on page load
+window.addEventListener("load", function () {
+  updateCartCount();
+  displayCartItems();
+});
